@@ -1,3 +1,5 @@
+# env
+pr-aws-env
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

@@ -84,7 +84,7 @@ Servicio tipo cola dónde guardaremos los eventos enviados por la recolección.
 ## DynamoDB
 
 ### Setup
-
+![DYN_00](images/DYNAMO_00.png)
 
 ## Webapp
 ### Start

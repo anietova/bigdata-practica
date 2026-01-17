@@ -1,13 +1,21 @@
-# Parámetros para la creación
+# Notas
 
 ## Seguridad
 Se crea una VPC con plantillas de aws que tiene una subred pública para ubicar servicios que necesitan acceso a internet y subred privada para la capa de persistencia de datos.
+
+![VPC 0](images/VPC_00.png)
+![VPC 1](images/VPC_01.png)
+
 
 Nota: algunos servicios son globales (kinesis, lambda) realmente no se les asocia VPC.
 
 ## EC2 
 Este componente iaas lo ubicaremos en la subred pública para que sea accesible vía internet por la recolección de datos y por los usuarios que quieran ver el dashboard.
 Idealmente deberían ser EC2´s diferentes pero para la práctica utilizaremos la misma.
+
+![EC2 0](images/EC2_00.png)
+![EC2 1](images/EC2_01.png)
+![EC2 2](images/EC2_02.png)
 
 Descarga ppk para putty
 Nota: la ip es dinámica, al reinciar cambia.

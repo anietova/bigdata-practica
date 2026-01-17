@@ -150,6 +150,15 @@ BINANCE:BTCUSDT | Price: 95372.09 | Volume: 0.00121 | Trades: 2
 ![UT 5](images/UNIT_TEST_05.png)
 
 
+# Master layer / flujo validación
+### Sink S3
+Dentro del mismo producer añadirmos un push a S3 que nos servirá para tener la capa de datos **maestra** que podemos utilizar para validar y consolidar datos al final del día por ejemplo. Esta capa también se podría utilizar con fines más analíticos.
+
+### Lambda RDS
+
+
+# Otros
 
 ## Acceso ssh Putty
+
 

@@ -16,6 +16,9 @@ Idealmente deberían ser EC2´s diferentes pero para la práctica utilizaremos l
 ![EC2 0](images/EC2_00.png)
 ![EC2 1](images/EC2_01.png)
 ![EC2 2](images/EC2_02.png)
+![EC2 3](images/EC2_03.png)
+![EC2 SEC](images/EC2_SEC1.png)
+
 
 Descarga ppk para putty
 Nota: la ip es dinámica, al reinciar cambia.
@@ -46,7 +49,9 @@ Authenticating with public key "ec2-bigdata-2"
       ~~._.   _/
          _/ _/
        _/m/'
-Last login: Fri Jan 16 23:41:02 2026 from 159.147.237.164
+Last login: Sat Jan 17 10:39:59 2026 from 159.147.237.164
+[ec2-user@ip-10-0-0-9 ~]$ pwd
+/home/ec2-user
 [ec2-user@ip-10-0-0-9 ~]$ ls -ltr
 total 0
 drwxr-xr-x. 3 ec2-user ec2-user 59 Jan 16 23:39 bigdata
@@ -64,7 +69,87 @@ total 4
 ## Kinesis streams
 Servicio tipo cola dónde guardaremos los eventos enviados por la recolección.
 
-### Script setup
+### Setup
+![KIN 0](images/KINESIS_00.png)
+![KIN 1](images/KINESIS_01.png)
+![KIN 2](images/KINESIS_02.png)
 
 ## Lambda
+
+### Setup
+![LAMBDA_01](images/LAMBDA_01.png)
+![LAMBDA_02](images/LAMBDA_02.png)
+![LAMBDA_03](images/LAMBDA_03.png)
+
+## DynamoDB
+
+### Setup
+
+
+## Webapp
+### Start
+![WEBAPP_00](images/WEBAPP_00.png)
+
+## Unit Test / Demo
+
+```
+Entrada:
+	
+{"data":[{"c":null,"p":95372.09,"s":"BINANCE:BTCUSDT","t":1768655932976,"v":0.00063},{"c":null,"p":95372.09,"s":"BINANCE:BTCUSDT","t":1768655933296,"v":0.00058}],"type":"trade"}
+
+
+DynamoDB:
+{
+  "pair": {
+    "S": "BINANCE:BTCUSDT"
+  },
+  "wtime": {
+    "S": "1768655880"
+  },
+  "last_price": {
+    "N": "95372.09"
+  },
+  "trades": {
+    "N": "2"
+  },
+  "ttl": {
+    "N": "1768659480"
+  },
+  "volume": {
+    "N": "0.00121"
+  }
+}	
+
+webapp:
+
+BINANCE:BTCUSDT | Price: 95372.09 | Volume: 0.00121 | Trades: 2
+```
+
+* Estado inicial:
+
+![UT 0](images/UNIT_TEST_00.png)
+
+* Producimos 1 evento:
+
+![UT 1](images/UNIT_TEST_01.png)
+
+* Comprobamos paso por kinesis:
+
+![UT 2](images/UNIT_TEST_02.png)
+
+* Comprobamos paso por lambda:
+
+![UT 3](images/UNIT_TEST_03.png)
+
+* Comprobamos persistencia DynamoDB:
+
+![UT 4](images/UNIT_TEST_04.png)
+
+* Webapp:
+
+![UT 5](images/UNIT_TEST_05.png)
+
+
+
+## Acceso ssh Putty
 

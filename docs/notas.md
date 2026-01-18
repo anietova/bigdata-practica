@@ -184,8 +184,7 @@ Pasos de creación del RDS mysql;
 ![RDS](images/RDS_05.png)
 ![RDS](images/RDS_06.png)
 ![RDS](images/RDS_07.png)
-![RDS](images/RDS_08.png)
-![RDS](images/RDS_09.png)
+
 ![RDS](images/RDS_10.png)
 
 Nota: Como el EC2 no tenía la librería de mysql, finalmente la única forma que hemos tenido de poder conectarnos con un cliente SQL para comprobar datos ha sido haciendo un tunel con putty vía EC2 e instalando DBeaver en local.
@@ -196,9 +195,11 @@ Productor:
 
 ![VAL0](images/VAL_00.png)
 
+
 S3:
 
 ![VAL1](images/VAL_01.png)
+
 
 CLOUDWATCH / LAMBDA:
 
@@ -212,7 +213,4 @@ RDS:
 # Otros
 
 ## Acceso ssh Putty
-
-
-
 

@@ -172,8 +172,23 @@ Este componente se activará con la llegada de cada evento a S3 y transformará 
 
 [processRDS.py](./../02-process/processRDS.py)
 
-## RDS
+Nota: esta lambda se ha tenido que empaquetar en local a un .zip y se ha subido ya que el EC2 no tenía la librería de mysql, (como en el vídeo de instrucción), y tampoco era posible instalarla.
 
+## RDS
+Pasos de creación del RDS mysql;
+
+![RDS](images/RDS_01.png)
+![RDS](images/RDS_02.png)
+![RDS](images/RDS_03.png)
+![RDS](images/RDS_04.png)
+![RDS](images/RDS_05.png)
+![RDS](images/RDS_06.png)
+![RDS](images/RDS_07.png)
+![RDS](images/RDS_08.png)
+![RDS](images/RDS_09.png)
+![RDS](images/RDS_10.png)
+
+Nota: Como el EC2 no tenía la librería de mysql, finalmente la única forma que hemos tenido de poder conectarnos con un cliente SQL para comprobar datos ha sido haciendo un tunel con putty vía EC2 e instalando DBeaver en local.
 
 ## Prueba flujo de validación
 

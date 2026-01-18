@@ -151,14 +151,53 @@ BINANCE:BTCUSDT | Price: 95372.09 | Volume: 0.00121 | Trades: 2
 
 
 # Master layer / flujo validación
-### Sink S3
+Los flujos de streaming RT suelen tener diferentes pasos y por lo tanto diferentes puntos de error. Normalmente, se contruye un flujo adicional más simple que permite conciliar los datos en caso de error del de streaming. En nuestro caso, vamos a contruir un flujo que guardará los datos sin procesar en un bucket S3. De esta forma, en la capa S3 se construye una capa raw-master que permite reconstruir modelos cuyo proceso ha fallado, entre otros.
+
+En nuestro caso particular, para validar que los agregados son correctos, terminaremos el flujo de S3 contra una BBDD relacional tipo RDS dónde guardaremos el datos de forma estructurada listo para contrastar con el agregado.
+
+S3 ====> Lambda ====> RDS mysql
+
+## VPC S3 gateway
+Para que la lambda pueda acceder al S3, hay que crear un gateway.
+
+![GATEWAY](images/GATEWAT_S3.png)
+
+## Sink S3
 Dentro del mismo producer añadirmos un push a S3 que nos servirá para tener la capa de datos **maestra** que podemos utilizar para validar y consolidar datos al final del día por ejemplo. Esta capa también se podría utilizar con fines más analíticos.
 
-### Lambda RDS
+[producer.py](./../01-ingestion/producer.py)
 
+## Lambda S3 > RDS (processRDS.py)
+Este componente se activará con la llegada de cada evento a S3 y transformará los datos para cargarlos en la base de datos relacional RDS.
+
+[processRDS.py](./../02-process/processRDS.py)
+
+## RDS
+
+
+## Prueba flujo de validación
+
+Productor:
+
+![VAL0](images/VAL_00.png)
+
+S3:
+
+![VAL1](images/VAL_01.png)
+
+CLOUDWATCH / LAMBDA:
+
+![VAL2](images/VAL_02.png)
+
+
+RDS:
+
+![VAL3](images/VAL_03.png)
 
 # Otros
 
 ## Acceso ssh Putty
+
+
 
 
